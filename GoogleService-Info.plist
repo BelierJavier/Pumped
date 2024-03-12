@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAqkPXMcdM4xRP7zTseJd_JEO-v4wE5irc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>423930208724</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>prodigyalpha.Pumped</string>
+	<key>PROJECT_ID</key>
+	<string>pumped-83186</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pumped-83186.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:423930208724:ios:d74bb155ad6eef770cb641</string>
+</dict>
+</plist>
