@@ -42,6 +42,9 @@ struct LoginView: View {
                     .foregroundStyle(.white)
                     .background(Color(.black))
                     .cornerRadius(15)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(.red, lineWidth: !email.isEmpty && !isEmail() ? 3 : 0))
                     .padding([.horizontal], 45)
                     .padding(.bottom, 15)
                 
@@ -62,23 +65,21 @@ struct LoginView: View {
                     Button {
                         Login()
                     } label: {
-                        Text("Sign Up")
+                        Text("Login")
                             .font(.title3)
                             .fontWeight(.bold)
-                            .padding()
                             .frame(maxWidth: .infinity)
-                            .foregroundStyle(.white)
-                            .background(Color(.red))
-                            .cornerRadius(15)
-                    }
+                            .padding()
+                   }.disabled((email.isEmpty || pass.isEmpty) || (!isEmail()))
+                    .buttonStyle(RegButtonStyle())
+                    .padding(.bottom, 10)
                     
                 }
-                .shadow(color: Color("redglow"), radius: 10, x: 0, y: 5)
                 .padding([.horizontal], 45)
                 .padding(.bottom, 10)
-                
-            }
-            .foregroundColor(.white)
+            
+              }
+              .foregroundColor(.white)
         }
     }
     func Login() {
@@ -88,6 +89,12 @@ struct LoginView: View {
             }
         }
     }
+    func isEmail() -> Bool{
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+
 }
 
 #Preview {
