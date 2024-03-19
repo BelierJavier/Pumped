@@ -12,6 +12,7 @@ struct SignupView: View {
     @State private var email = ""
     @State private var pass = ""
     @State private var repass = ""
+    @State var showLog: Bool = false
     var body: some View {
        
         VStack() {
@@ -81,7 +82,21 @@ struct SignupView: View {
                 .buttonStyle(RegButtonStyle())
                 .padding(.bottom, 10)
                 
-                logButton()
+                HStack {
+                    Text("Already have an account?")
+                        .fontWeight(.regular)
+                        .foregroundColor(Color.gray)
+                    
+                    Button{
+                        withAnimation(.easeInOut(duration: 1.2)) {
+                            showLog.toggle()
+                        }
+                    } label: {
+                        Text("Sign in")
+                            .foregroundStyle(.white)
+                            .fontWeight(.bold)
+                    }
+                }.font(.system(size: 12))
                 
             }
             .padding([.horizontal], 45)

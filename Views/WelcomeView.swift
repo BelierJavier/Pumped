@@ -11,6 +11,7 @@ import Firebase
 struct WelcomeView: View {
     @State var userIsLoggedIn: Bool = false
     @State var showReg: Bool = false
+    @State var showLog: Bool = false
     @State var alpha = 0.0
 
     var body: some View {
@@ -37,7 +38,7 @@ struct WelcomeView: View {
                 else {
                     VStack {
                         IntroView()
-            
+                        
                         Button{
                             withAnimation(.easeInOut(duration: 1.2)) {
                                 showReg.toggle()
@@ -56,8 +57,46 @@ struct WelcomeView: View {
                         .padding([.horizontal], 45)
                         .padding(.bottom, 10)
                         
-                        logButton()
+                        HStack {
+                            Text("Already have an account?")
+                                .fontWeight(.regular)
+                                .foregroundColor(Color.gray)
+                            
+                            Button{
+                                withAnimation(.easeInOut(duration: 0.8)) {
+                                    showLog.toggle()
+                                }
+                            } label: {
+                                Text("Sign in")
+                                    .foregroundStyle(.white)
+                                    .fontWeight(.bold)
+                            }
+                        }.font(.system(size: 12))
+                        
                     }.transition(.move(edge: .bottom))
+                }
+            }
+        
+            if showLog {
+                
+                VStack {
+                    ZStack {
+                        Button {
+                            withAnimation(.easeInOut(duration: 0.8)) {
+                                showLog.toggle()
+                            }
+                        } label: {
+                            Text("")
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        }
+                        .labelsHidden()
+                        .background(Color(.black))
+                        .opacity(0.8)
+                        .frame(height: UIScreen.main.bounds.height)
+                        .ignoresSafeArea()
+                        
+                        LoginView()
+                    }
                 }
             }
         }
@@ -89,26 +128,6 @@ struct IntroView: View {
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-    }
-}
-
-struct logButton: View {
-    @State var logView: Bool = false
-    
-    var body: some View {
-        HStack {
-            Text("Already have an account?")
-                .fontWeight(.regular)
-                .foregroundColor(Color.gray)
-            
-            Button{
-                //func
-            } label: {
-                Text("Sign in")
-                    .foregroundStyle(.white)
-                    .fontWeight(.bold)
-            }
-        }.font(.system(size: 12))
     }
 }
 
