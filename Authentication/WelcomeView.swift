@@ -15,25 +15,38 @@ struct WelcomeView: View {
     @State var alpha = 0.0
 
     var body: some View {
-        ZStack{
+        if userIsLoggedIn {
+            Text("KABOOM")
+        }
+        else {
+            content
+        }
+    }
+    
+    var content: some View {
+        
+        ZStack {
             Color("darkgray")
                 .ignoresSafeArea()
             Circle()
-                .scale(showReg ? 1.4 : 1.7)
+                .scale(1.8)
                 .foregroundColor(showReg ? .red : .white)
-                .position(x: showReg ? 120 : 100, y: 0)
+                .position(x: 100 , y: 0)
                 .animation(.easeInOut(duration: 0.7), value: showReg)
             
             VStack {
                 if showReg {
-                    SignupView()
-                        .opacity(alpha)
-                        .onAppear() {
-                            withAnimation(.easeInOut(duration: 1.2).delay(0.5)) {
-                                alpha += 1.0
+                    ZStack {
+                        SignupView()
+                            .opacity(alpha)
+                            .onAppear() {
+                                withAnimation(.easeInOut(duration: 1.2).delay(0.5)) {
+                                    alpha += 1.0
+                                }
                             }
-                        }
-                        .transition(.move(edge: .top))
+                    }
+                        .zIndex(0)
+                        .transition(.move(edge: .bottom))
                 }
                 else {
                     VStack {
@@ -75,12 +88,12 @@ struct WelcomeView: View {
                         
                     }.transition(.move(edge: .bottom))
                 }
-            }
+            }.zIndex(0)
         
             if showLog {
                 
-                VStack {
-                    ZStack {
+                ZStack {
+                    VStack {
                         Button {
                             withAnimation(.easeInOut(duration: 0.8)) {
                                 showLog.toggle()
@@ -93,13 +106,28 @@ struct WelcomeView: View {
                         .background(Color(.black))
                         .opacity(0.8)
                         .frame(height: UIScreen.main.bounds.height)
-                        .ignoresSafeArea()
-                        
-                        LoginView()
+                    .ignoresSafeArea()
                     }
                 }
+                .zIndex(1)
+            }
+            if showLog {
+                ZStack {
+                    LoginView()
+                    
+                }
+                .zIndex(2)
+                .transition(.move(edge: .bottom))
             }
         }
+        /*.onAppear{
+            Auth.auth().addStateDidChangeListener { auth, user in
+                if user != nil {
+                    userIsLoggedIn.toggle()
+                }
+                
+            }
+        }*/
     }
 }
 
