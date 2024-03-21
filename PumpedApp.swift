@@ -20,12 +20,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct PumpedApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var authManager: AuthManager
+    
     init() {
         FirebaseApp.configure()
         
         let authManager = AuthManager()
        _authManager = StateObject(wrappedValue: authManager)
+        
     }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

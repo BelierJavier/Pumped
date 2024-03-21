@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  SummaryView.swift
 //  Pumped
 //
 //  Created by Belier Javier on 3/21/24.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct SummaryView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("Home")
+                Text("Summary")
                     .bold()
                     .foregroundStyle(Color(.white))
             }
@@ -20,5 +20,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    SummaryView()
 }

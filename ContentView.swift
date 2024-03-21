@@ -9,11 +9,38 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
+    @State private var selectedTab: Tab = .house
+    
     var body: some View {
         if authManager.authState != .signedIn {
             WelcomeView()
         } else {
-            HomeView()
+            ZStack {
+                Color("spacegray")
+                    .ignoresSafeArea()
+                
+                VStack {
+                    if selectedTab == .house {
+                        HomeView()
+                    }
+                    if selectedTab == .locationFill {
+                        FriendsView()
+                    }
+                    if selectedTab == .dumbbell {
+                        SummaryView()
+                    }
+                    if selectedTab == .person {
+                        ProfileView()
+                    }
+                }
+                
+                VStack {
+                    Spacer()
+                    Navbar(selectedTab: $selectedTab)
+                }
+            }.onAppear() {
+                selectedTab = .house
+            }
         }
     }
 }
