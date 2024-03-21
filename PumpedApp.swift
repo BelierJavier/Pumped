@@ -20,9 +20,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct PumpedApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authManager: AuthManager
+    init() {
+        let authManager = AuthManager()
+        _authManager = StateObject(wrappedValue: authManager)
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(authManager)
         }
     }
 }

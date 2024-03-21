@@ -120,14 +120,7 @@ struct WelcomeView: View {
                 .transition(.move(edge: .bottom))
             }
         }
-        /*.onAppear{
-            Auth.auth().addStateDidChangeListener { auth, user in
-                if user != nil {
-                    userIsLoggedIn.toggle()
-                }
-                
-            }
-        }*/
+        
     }
 }
 
