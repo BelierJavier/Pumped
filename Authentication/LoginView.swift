@@ -11,7 +11,6 @@ import Firebase
 struct LoginView: View {
     @State private var email = ""
     @State private var pass = ""
-    @State var userIsLoggedIn: Bool = false
 
     var body: some View {
             

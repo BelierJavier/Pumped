@@ -10,7 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthManager
     var body: some View {
-        WelcomeView()
+        if authManager.authState != .signedIn {
+            WelcomeView()
+        } else {
+            HomeView()
+        }
     }
 }
 

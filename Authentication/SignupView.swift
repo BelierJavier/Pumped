@@ -13,6 +13,7 @@ struct SignupView: View {
     @State private var pass = ""
     @State private var repass = ""
     @State var showLog: Bool = false
+    
     var body: some View {
        
         ZStack {
