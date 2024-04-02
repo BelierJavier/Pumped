@@ -33,30 +33,35 @@ struct LoginView: View {
                                 Spacer()
                             }
                             
-                            TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(Color(.gray)))
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .foregroundStyle(.white)
-                                .background(Color(.black))
-                                .cornerRadius(15)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .stroke(.red, lineWidth: !email.isEmpty && !isEmail() ? 3 : 0))
-                                .padding([.horizontal], 45)
-                                .padding(.bottom, 15)
+                            HStack {
+                                Image(systemName: "envelope")
+                                TextField("Email", text: $email, prompt: Text("Email").foregroundStyle(Color(.gray)))
+                                
+                            }.font(.subheadline)
+                            .fontWeight(.regular)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(.white)
+                            .background(Color(.black))
+                            .cornerRadius(15)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(.red, lineWidth: !email.isEmpty && !isEmail() ? 3 : 0))
+                            .padding([.horizontal], 45)
+                            .padding(.bottom, 15)
                             
-                            SecureField("Password", text: $pass, prompt: Text("Password").foregroundStyle(Color(.gray)))
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .foregroundStyle(.white)
-                                .background(Color(.black))
-                                .cornerRadius(15)
-                                .padding([.horizontal], 45)
-                                .padding(.bottom, 30)
+                            HStack {
+                                Image(systemName: "lock")
+                                SecureField("Password", text: $pass, prompt: Text("Password").foregroundStyle(Color(.gray)))
+                            }.font(.subheadline)
+                            .fontWeight(.regular)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .foregroundStyle(.white)
+                            .background(Color(.black))
+                            .cornerRadius(15)
+                            .padding([.horizontal], 45)
+                            .padding(.bottom, 30)
                             
                             
                             VStack() {

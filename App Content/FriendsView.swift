@@ -14,8 +14,11 @@ struct FriendsView: View {
             Color("spacegray")
                 .ignoresSafeArea()
             VStack {
-                TextField("Search", text: $username, prompt: Text("Find new friends").foregroundStyle(Color(.gray)))
-                    .font(.subheadline)
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Search", text: $username, prompt: Text("Find new friends").foregroundStyle(Color(.gray)))
+                        
+                }.font(.subheadline)
                     .fontWeight(.regular)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -23,10 +26,6 @@ struct FriendsView: View {
                     .background(Color(.black))
                     .cornerRadius(15)
                     .padding([.horizontal], 45)
-                    .padding(.bottom, 15)
-                Text("Friends")
-                    .bold()
-                    .foregroundStyle(Color(.white))
                 
             }
         }
